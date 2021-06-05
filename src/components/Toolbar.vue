@@ -1,35 +1,42 @@
 <template>
-  <v-row justify="center" no-gutters>
-    <v-col lg="8" md="12" class="tasks-toolbar">
+    <div class="main-toolbar">
+  
       <v-app-bar
         color="transparent"
         height="80"
         elevation="0"
         dark
       >
-        <v-toolbar-title  class="tasks-title">
-          <v-btn color="#e451ff" text to="/" class="button">
-            Tasks
-          </v-btn>
+        <v-toolbar-title class="title-toolbar"> 
+             Movies
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <v-btn text color="#3e3e55" class="buttons">
+        <v-btn text color= #000>
           Button
         </v-btn>
 
-        <v-btn text color="#3e3e55" class="buttons">
+        <v-btn text color= #000>
           Button
         </v-btn>
       </v-app-bar>
-    </v-col>
-  </v-row>
+    </div>
 </template>
 
 <script>
-
 export default ({
     name: 'Toolbar',
 })
 </script>
+
+<style lang="scss">
+.main-toolbar {
+    margin: 0 100px;
+    .title-toolbar {
+        color: #ff0000;
+        font-family: 'Ubuntu-Bold';
+    }
+}
+
+</style>
