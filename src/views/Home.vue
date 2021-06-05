@@ -60,6 +60,11 @@
 <script>
 export default {
     name: 'Home',
+    methods: {
+        goTo(route) {
+            this.$router.push({ name: route })
+        }
+    }
 }
 </script>
 

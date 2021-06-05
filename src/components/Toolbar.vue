@@ -8,18 +8,21 @@
         dark
       >
         <v-toolbar-title class="title-toolbar"> 
-             Movies
+            <v-btn color="#ff0000" text to="/" class="button">
+            Movies
+          </v-btn>
+             
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <v-btn text color= #000>
+        <!--<v-btn text color= #000>
           Button
         </v-btn>
 
         <v-btn text color= #000>
           Button
-        </v-btn>
+        </v-btn> -->
       </v-app-bar>
     </div>
 </template>
