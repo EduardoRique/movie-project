@@ -10,12 +10,25 @@
 </template>
 
 <script>
-import Toolbar from './components/Toolbar.vue'
+import Toolbar from './components/Toolbar.vue';
+import { mapGetters } from 'vuex';
 export default {
   name: 'App',
 
   components: {
     Toolbar,
+  },
+  computed: {
+    ...mapGetters([
+      'currentUser',
+    ]),
+  },
+  watch: {
+    currentUser(currentUser) {
+      if (currentUser) {
+        this.$router.push('/dashboard');
+      }
+    },
   },
 };
 </script>
