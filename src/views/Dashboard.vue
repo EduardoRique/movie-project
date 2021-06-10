@@ -9,6 +9,7 @@
         <div class="welcome mb-10">
           Olá, {{ userName }}
         </div>
+
         <v-btn
           elevation="0"
           class="mb-8"
@@ -42,21 +43,21 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import ListCard from '@/components/ListCard.vue';
+import { mapGetters, mapActions } from "vuex";
+import ListCard from "@/components/ListCard.vue";
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
   components: {
     ListCard,
   },
   data() {
     return {
-      userName: '',
-      listItems: '',
+      userName: "",
+      listItems: ""
     };
   },
   computed: {
-    ...mapGetters(['currentUser', 'getToken', 'lists']),
+    ...mapGetters(["currentUser", "getToken", "lists"]),
     user() {
       return this.currentUser;
     },
@@ -72,27 +73,30 @@ export default {
     },
     lists(value) {
       if (value) {
-        this.listItems = value; 
+        this.listItems = value;
       }
-    }
+    },
   },
   mounted() {
     this.userName = this.currentUser.name;
     this.fetchLists();
   },
   methods: {
-    ...mapActions(['fetchLists', 'addGoogleToken', 'addNewTaskItem']),
+    ...mapActions(["fetchLists", "addGoogleToken", "addNewTaskItem"]),
     fetchAuthCode() {
       this.$gAuth.signIn().then((response) => {
         this.addGoogleToken(response.qc.access_token);
-        window.localStorage.setItem('ACCESS_TOKEN', JSON.stringify(response.qc.access_token));
+        window.localStorage.setItem(
+          "ACCESS_TOKEN",
+          JSON.stringify(response.qc.access_token)
+        );
       });
     },
     addNewTask(item) {
       this.addNewTaskItem(item);
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -100,9 +104,9 @@ export default {
   width: 100%;
   margin-top: 0;
   height: 100vh;
-  
+
   .welcome {
-    font-family: 'Ubuntu-Medium';
+    font-family: "Ubuntu-Medium";
     font-size: 16px;
   }
 }

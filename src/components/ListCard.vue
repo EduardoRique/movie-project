@@ -8,16 +8,17 @@
         <div class="overline mb-4">
           {{ listTitle }}
         </div>
+        <input class="form-control" type="text" v-model="searchQuery" placeholder="Search" />
       </v-list-item-content>
     </v-list-item>
 
     <v-card-text>
       <v-list>
         <v-list-item-group>
-          <template v-for="(item, index) in allTasks">
+          <template v-for="(item, index) in searchItems">
             <list-item :item="item" :key="item.id" />
             <v-divider
-              v-if="index < allTasks.length - 1"
+              v-if="index < searchItems.length - 1"
               :key="index"
             ></v-divider>
           </template>
@@ -50,7 +51,8 @@ export default {
     return {
       selected: [],
       list: this.listItem,
-      newTask: ''
+      newTask: '',
+      searchQuery: ''
     };
   },
   computed: {
@@ -65,6 +67,22 @@ export default {
         return this.list.tasks.items;
       }
       return [];
+    },
+    searchItems() {
+      let searchedItems = [];
+
+      if (this.list && this.list.tasks) {
+        searchedItems = this.list.tasks.items;
+      }
+  
+      if (this.searchQuery != '' && this.searchQuery) {
+        searchedItems = searchedItems.filter((item) => {
+          return item.title
+            .toUpperCase()
+            .includes(this.searchQuery.toUpperCase())
+        })
+      }
+      return searchedItems
     }
   },
   methods: {
