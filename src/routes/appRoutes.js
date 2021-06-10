@@ -33,6 +33,14 @@ const routes = new Router({
         requiresAuth: true,
       }
     },
+    {
+        path: '/movies',
+        name: 'movies',
+        component: () => import('@/views/Movies.vue'),
+        meta: {
+          requiresAuth: true,
+        }
+      },
   ]
 })
 

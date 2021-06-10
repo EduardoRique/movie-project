@@ -1,5 +1,6 @@
 <template>
-  <div class="dashboard">
+<div>FILMES de {{ userName }}</div>
+  <!--<div class="dashboard">
     <v-row
       no-gutters
       justify="left"
@@ -38,33 +39,33 @@
         />
       </v-col>
     </v-row>
-  </div>
+  </div>-->
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import ListCard from '@/components/ListCard.vue';
+import { mapGetters/*, mapActions*/ } from 'vuex';
+//import ListCard from '@/components/ListCard.vue';
 export default {
-  name: 'Dashboard',
+  name: 'Movies',
   components: {
-    ListCard,
+    //ListCard,
   },
   data() {
     return {
       userName: '',
-      listItems: '',
+      //listItems: '',
     };
   },
   computed: {
-    ...mapGetters(['currentUser', 'getToken', 'lists']),
+    ...mapGetters(['currentUser']),//, 'getToken', 'lists']),
     user() {
       return this.currentUser;
     },
-    items() {
+    /*items() {
       return this.listItems;
-    }
+    }*/
   },
-  watch: {
+  /*watch: {
     getToken(value) {
       if (value) {
         this.fetchLists();
@@ -75,23 +76,23 @@ export default {
         this.listItems = value; 
       }
     }
-  },
+  },*/
   mounted() {
     this.userName = this.currentUser.name;
-    this.fetchLists();
+    //this.fetchLists();
   },
-  methods: {
+  /*methods: {
     ...mapActions(['fetchLists', 'addGoogleToken', 'addNewTaskItem']),
     fetchAuthCode() {
       this.$gAuth.signIn().then((response) => {
-        this.addGoogleToken(response.qc.access_token);
-        window.localStorage.setItem('ACCESS_TOKEN', JSON.stringify(response.qc.access_token));
+        this.addGoogleToken(response.tc.access_token);
+        window.localStorage.setItem('ACCESS_TOKEN', JSON.stringify(response.tc.access_token));
       });
     },
     addNewTask(item) {
       this.addNewTaskItem(item);
     }
-  }
+  }*/
 }
 </script>
 

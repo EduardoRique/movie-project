@@ -1,13 +1,13 @@
 const state = {
     user: null,
     hasSession: false,
-   // googleToken: '',
+    googleToken: '',
   };
   
   const getters = {
     currentUser: () => (state.user),
     hasSession: () => (state.hasSession),
-   // getToken: () => (state.googleToken),
+    getToken: () => (state.googleToken),
   };
   
   const actions = {
@@ -16,9 +16,9 @@ const state = {
       if (payload) {
         commit('setSession', true)
       }
-    /*},
+    },
     addGoogleToken({ commit }, payload) {
-      commit('setToken', payload)*/
+      commit('setToken', payload)
     }
   };
   
@@ -31,10 +31,10 @@ const state = {
       const stateCopy = $state;
       stateCopy.hasSession = payload;
     },
-    /*setToken($state, payload) {
+    setToken($state, payload) {
       const stateCopy = $state;
       stateCopy.googleToken = payload;
-    }*/
+    }
   };
   
   export default {
