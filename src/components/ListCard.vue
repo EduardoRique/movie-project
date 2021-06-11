@@ -16,7 +16,9 @@
       <v-list>
         <v-list-item-group>
           <template v-for="(item, index) in searchItems">
-            <list-item :item="item" :key="item.id" />
+            <list-item
+            @updateTask="updateItem"
+            :item="item" :key="item.id" />
             <v-divider
               v-if="index < searchItems.length - 1"
               :key="index"
@@ -93,6 +95,15 @@ export default {
         tasklistId: this.list.id
       }
       this.$emit('addTasks', item)
+    },
+    updateItem(item) {
+      var updatedItem = {
+        id: item.id,
+        status: item.status,
+        title: item.title,
+        tasklistId: this.list.id
+      }
+      this.$emit('updatedTask', updatedItem);
     }
   }
 }

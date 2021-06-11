@@ -30,6 +30,18 @@ const actions = {
       dispatch('fetchLists');
     });
   },
+  addNewTaskSelectedItem({ commit }, payload) {
+    Tasks.insertItem(payload).then((response) => {
+      response['listId'] = payload.id;
+      payload['tasks'] = response;
+      commit('setLists', payload);
+    });
+  },
+  updateTaskItem({ dispatch }, payload) {
+    Tasks.updateItem(payload).then(() => {
+      dispatch('fetchLists');
+    });
+  }
 };
 
 const mutations = {

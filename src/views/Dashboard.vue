@@ -36,6 +36,7 @@
         <list-card
           :listItem="list"
           @addTasks="addNewTask"
+          @updatedTask="updateTask"
         />
       </v-col>
     </v-row>
@@ -82,7 +83,7 @@ export default {
     this.fetchLists();
   },
   methods: {
-    ...mapActions(["fetchLists", "addGoogleToken", "addNewTaskItem"]),
+    ...mapActions(["fetchLists", "addGoogleToken", "addNewTaskSelectedItem","addNewTaskItem","updateTaskItem"]),
     fetchAuthCode() {
       this.$gAuth.signIn().then((response) => {
         this.addGoogleToken(response.qc.access_token);
@@ -95,6 +96,20 @@ export default {
     addNewTask(item) {
       this.addNewTaskItem(item);
     },
+    updateTask(item) {
+      if(item.tasklistId !== "NHNiWHZOSXVyRVhQRkVGeg" && item.status !== "needsAction"){
+        console.log("ENTREI");
+        var newItem = {
+        status: 'needsAction',
+        title: item.title,
+        tasklistId: "NHNiWHZOSXVyRVhQRkVGeg"
+        }
+        this.addNewTaskSelectedItem(newItem);
+      }
+      //window.location = location;
+      this.updateTaskItem(item);
+    }
+    
   },
 };
 </script>

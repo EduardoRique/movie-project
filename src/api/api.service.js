@@ -22,6 +22,17 @@ const ApiService = {
         });
     });
   },
+
+  put(resourcePath, params) {
+    return new Promise((resolve) => {
+      Vue.axios
+        .put(`${resourcePath}`, params).then((response) => {
+          resolve(response.data);
+        }).catch((error) => {
+          console.log('Error', error.response);
+        });
+    });
+  },
 };
 
 export default ApiService;

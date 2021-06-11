@@ -4,6 +4,7 @@
       <v-list-item-content>
         <v-list-item-title>
           <v-checkbox
+            @click="updateItem"
             v-model="item.status"
             false-value="needsAction"
             true-value="completed"
@@ -21,5 +22,15 @@ export default {
   props: {
     item: Object,
   },
+  methods: {
+    updateItem() {
+      var item = {
+        id: this.item.id,
+        status: this.item.status,
+        title: this.item.title
+      }
+      this.$emit('updateTask', item);
+    }
+  }
 }
 </script>
